@@ -1,0 +1,33 @@
+{
+  "name": "s-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server",
+    "build": "npm run build:combine && npm run build:rollup",
+    "build:combine": "swatchercli -s -c watcher.config.js -o ./output -p ./src/**",
+    "build:rollup": "rollup -c",
+    "cw": "npm run _build:combine:watch",
+    "bw": "npm run _build:rollup:watch",
+    "_build:combine:watch": "swatchercli -c watcher.config.js -o ./output -p ./src/**",
+    "_build:rollup:watch": "rollup -c -w",
+    "compile:es": "babel --plugins @babel/plugin-transform-modules-commonjs ./transformations/Sass.es -d ./transformations"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "systemjs": "^3.0.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.11.0",
+    "rollup": "^1.2.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-svelte": "^5.0.1",
+    "svelte": "^2.16.1",
+    "svelte-module-combine": "^1.0.1",
+    "swatchercli": "^1.0.1"
+  }
+}
