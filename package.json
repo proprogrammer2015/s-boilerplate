@@ -21,6 +21,7 @@
     "systemjs": "^3.0.0"
   },
   "devDependencies": {
+    "http-server": "^0.11.1",
     "node-sass": "^4.11.0",
     "rollup": "^1.2.2",
     "rollup-plugin-commonjs": "^9.2.0",
