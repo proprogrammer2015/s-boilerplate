@@ -26,6 +26,25 @@ export default [
 }
 ,
 {
+    input: './output/auth/auth.html',
+    output: {
+        name: 'auth',
+        file: './dist/auth/auth.js',
+        format: 'amd'
+    },
+    plugins: [
+        resolve({
+            jsnext: true,
+            main: true
+        }),
+        commonjs({}),
+        svelte({
+            emitCss: false
+        })
+    ]
+}
+,
+{
     input: './output/panel/fancy-panel.html',
     output: {
         name: 'fancy-panel',
@@ -64,10 +83,10 @@ export default [
 }
 ,
 {
-    input: './output/auth/auth.html',
+    input: './output/panel/subpanel/subpanel.html',
     output: {
-        name: 'auth',
-        file: './dist/auth/auth.js',
+        name: 'subpanel',
+        file: './dist/panel/subpanel/subpanel.js',
         format: 'amd'
     },
     plugins: [
@@ -83,10 +102,10 @@ export default [
 }
 ,
 {
-    input: './output/panel/subpanel/subpanel.html',
+    input: './output/search/search.html',
     output: {
-        name: 'subpanel',
-        file: './dist/panel/subpanel/subpanel.js',
+        name: 'search',
+        file: './dist/search/search.js',
         format: 'amd'
     },
     plugins: [

@@ -1,0 +1,9 @@
+<div>
+    <input style="{color}" type="text" bind:value=searchText placeholder="Start typing to search..." />
+    <button>Search</button>
+</div>
+<div>
+    {#if searchText}
+        <p>{searchText}</p>
+    {/if}
+</div>
