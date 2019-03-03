@@ -1,30 +1,104 @@
+
+
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
 
-const paths = {
-    auth: 'auth/auth',
-    subpanel: 'panel/subpanel/subpanel'
-};
+export default [
+    
+{
+    input: './output/asyncComponent/asyncComponent.html',
+    output: {
+        name: 'asyncComponent',
+        file: './dist/asyncComponent/asyncComponent.js',
+        format: 'amd'
+    },
+    plugins: [
+        resolve({
+            jsnext: true,
+            main: true
+        }),
+        commonjs({}),
+        svelte({
+            emitCss: false
+        })
+    ]
+}
+,
+{
+    input: './output/panel/fancy-panel.html',
+    output: {
+        name: 'fancy-panel',
+        file: './dist/panel/fancy-panel.js',
+        format: 'amd'
+    },
+    plugins: [
+        resolve({
+            jsnext: true,
+            main: true
+        }),
+        commonjs({}),
+        svelte({
+            emitCss: false
+        })
+    ]
+}
+,
+{
+    input: './output/panel/panel.html',
+    output: {
+        name: 'panel',
+        file: './dist/panel/panel.js',
+        format: 'amd'
+    },
+    plugins: [
+        resolve({
+            jsnext: true,
+            main: true
+        }),
+        commonjs({}),
+        svelte({
+            emitCss: false
+        })
+    ]
+}
+,
+{
+    input: './output/auth/auth.html',
+    output: {
+        name: 'auth',
+        file: './dist/auth/auth.js',
+        format: 'amd'
+    },
+    plugins: [
+        resolve({
+            jsnext: true,
+            main: true
+        }),
+        commonjs({}),
+        svelte({
+            emitCss: false
+        })
+    ]
+}
+,
+{
+    input: './output/panel/subpanel/subpanel.html',
+    output: {
+        name: 'subpanel',
+        file: './dist/panel/subpanel/subpanel.js',
+        format: 'amd'
+    },
+    plugins: [
+        resolve({
+            jsnext: true,
+            main: true
+        }),
+        commonjs({}),
+        svelte({
+            emitCss: false
+        })
+    ]
+}
 
-export default Object.keys(paths).map(name => {
-    const modulePath = paths[name];
-    return {
-        input: `./output/${modulePath}.html`,
-        output: {
-            name,
-            file: `./dist/${modulePath}.js`,
-            format: 'amd'
-        },
-        plugins: [
-            resolve({
-                jsnext: true,
-                main: true
-            }),
-            commonjs({}),
-            svelte({
-                emitCss: false
-            })
-        ]
-    }
-});
+];

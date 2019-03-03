@@ -24,7 +24,12 @@ export default {
     },
     methods: {
         update(state) {
-            this.refs.innerComponent.set(state);
+            const component = this.refs.innerComponent;
+            if (component) {
+                component.set(state);
+            } else {
+                // TODO: record this action
+            }
         }
     }
 }
