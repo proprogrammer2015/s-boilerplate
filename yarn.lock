@@ -2000,9 +2000,9 @@ svelte@^2.16.1:
   version "2.16.1"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.16.1.tgz#559a68452029e72280311ccc8dfd2ff10d0a5f18"
 
-swatchercli@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/swatchercli/-/swatchercli-1.0.5.tgz#4222c82b7326726b0c2ad99184e1dfa3c7439c01"
+swatchercli@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/swatchercli/-/swatchercli-1.1.0.tgz#cda5ef8838f10f13e5d0d61a5c16c9f21c450acb"
   dependencies:
     chokidar "^2.1.0"
     colors "^1.3.3"

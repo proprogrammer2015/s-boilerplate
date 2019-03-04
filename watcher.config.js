@@ -6,7 +6,7 @@ const { Sass } = require('./transformations/Sass');
 const { rollupTemplate } = require('./rollup.template');
 
 const output = './output';
-exports.isSingleRun = false;
+exports.watch = false;
 exports.patterns = [
     './src/**'
 ];
