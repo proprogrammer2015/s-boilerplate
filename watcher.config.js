@@ -10,6 +10,7 @@ exports.isSingleRun = false;
 exports.patterns = [
     './src/**'
 ];
+exports.filename = '[name]-compiled'
 exports.output = output;
 exports.outputExtension = 'html';
 exports.processors = [

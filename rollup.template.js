@@ -7,7 +7,7 @@ import svelte from 'rollup-plugin-svelte';
 
 const moduleDefinition = ({ dirStr, modulePath, name, ext }) => `
 {
-    input: '${dirStr}/${name}${ext}',
+    input: '${dirStr}/${name}-compiled${ext}',
     output: {
         name: '${name}',
         file: '${dirStr.replace('output', 'dist')}/${name}.js',

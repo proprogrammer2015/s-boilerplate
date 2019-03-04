@@ -7,7 +7,7 @@ import svelte from 'rollup-plugin-svelte';
 export default [
     
 {
-    input: './output/asyncComponent/asyncComponent.html',
+    input: './output/asyncComponent/asyncComponent-compiled.html',
     output: {
         name: 'asyncComponent',
         file: './dist/asyncComponent/asyncComponent.js',
@@ -26,7 +26,7 @@ export default [
 }
 ,
 {
-    input: './output/auth/auth.html',
+    input: './output/auth/auth-compiled.html',
     output: {
         name: 'auth',
         file: './dist/auth/auth.js',
@@ -45,7 +45,7 @@ export default [
 }
 ,
 {
-    input: './output/panel/fancy-panel.html',
+    input: './output/panel/fancy-panel-compiled.html',
     output: {
         name: 'fancy-panel',
         file: './dist/panel/fancy-panel.js',
@@ -64,7 +64,7 @@ export default [
 }
 ,
 {
-    input: './output/panel/panel.html',
+    input: './output/panel/panel-compiled.html',
     output: {
         name: 'panel',
         file: './dist/panel/panel.js',
@@ -83,10 +83,10 @@ export default [
 }
 ,
 {
-    input: './output/panel/subpanel/subpanel.html',
+    input: './output/search/search-compiled.html',
     output: {
-        name: 'subpanel',
-        file: './dist/panel/subpanel/subpanel.js',
+        name: 'search',
+        file: './dist/search/search.js',
         format: 'amd'
     },
     plugins: [
@@ -102,10 +102,10 @@ export default [
 }
 ,
 {
-    input: './output/search/search.html',
+    input: './output/panel/subpanel/subpanel-compiled.html',
     output: {
-        name: 'search',
-        file: './dist/search/search.js',
+        name: 'subpanel',
+        file: './dist/panel/subpanel/subpanel.js',
         format: 'amd'
     },
     plugins: [
