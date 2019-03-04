@@ -8,8 +8,7 @@
     "watch": "START /B npm run _build:combine -- -w & START /B npm run _build:rollup -- -w",
     "build": "npm run _build:combine && npm run _build:rollup",
     "_build:combine": "swatchercli -c watcher.config.js",
-    "_build:rollup": "rollup -c",
-    "compile:es": "babel --plugins @babel/plugin-transform-modules-commonjs ./transformations/Sass.es -d ./transformations"
+    "_build:rollup": "rollup -c"
   },
   "keywords": [],
   "author": "",
