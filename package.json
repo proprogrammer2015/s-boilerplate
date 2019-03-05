@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server",
-    "watch": "npm run _build:combine -- -w",
-    "build": "npm run _build:combine && npm run _build:rollup",
-    "_build:combine": "swatchercli -c watcher.config.js",
-    "_build:rollup": "rollup -c"
+    "watch": "npm run build -- -w",
+    "build": "swatchercli -c watcher.config.js"
   },
   "keywords": [],
   "author": "",

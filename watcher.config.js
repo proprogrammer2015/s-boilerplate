@@ -3,7 +3,7 @@ const color = require('colors');
 const { resolvePath } = require('corresponding-path');
 const { Html, Js } = require('svelte-module-combine');
 const { Sass } = require('./transformations/Sass');
-const { moduleDefinition } = require('./rollup.template');
+const { rollupTemplate } = require('./rollup.template');
 const rollup = require('rollup');
 
 const output = './output';
@@ -11,7 +11,6 @@ exports.watch = false;
 exports.patterns = [
     './src/**'
 ];
-// exports.filename = '[name]-compiled'
 exports.output = output;
 exports.outputExtension = 'html';
 exports.processors = [
@@ -19,31 +18,31 @@ exports.processors = [
     new Js(),
     new Sass()
 ];
-
-// TODO: add all watched files in delete as 2nd param
+const log = (fontColor, text) => console.log(`${color.rainbow('[SMC]')} ${color[fontColor](text)}`)
 exports.entrypoints = {
-    delete: path => console.log(color.grey(`${path} was removed.`)),
-    error: msg => console.log(color.red(`ERROR: ${msg}`)),
-    compile: (path, all) => console.log(color.green(`${path} was compiled.`)),
-    change: (path, all) => {
-        generateRollupConfig(all);
-        console.log(color.yellow(`${path} was changed.`))
-    },
-    add: (path, all) => {
-        generateRollupConfig(all);
-        console.log(color.green(`${path} was added.`));
-    },
+    error: msg => log('red', `ERROR: ${msg}`),
+    delete: path => log('grey', `${path} was removed.`),
+    add: (path, all) => log('green', `${path} was added.`),
+    change: (path, all) => log('yellow', `${path} was changed.`),
+    compile: (path, all) => log('green', `${path} was compiled.`),
     ready: (_, all) => {
         generateRollupConfig(all);
-        console.table(color.rainbow(`[SVELTE MODULE COMBINE]`))
+        console.table(color.rainbow(`[svelte-module-combine]`))
     }
 }
 
 const generateRollupConfig = paths => {
-    paths.map(path => resolvePath(path, output))
-        .filter(({ ext }) => ext === '.html')
-        .map(moduleDefinition)
-        .forEach(({ inputOptions, outputOptions }) => {
-            rollup.rollup(inputOptions).then(bundle => bundle.write(outputOptions))
-        });
+    const watchOptions = rollupTemplate(
+        paths.map(path => resolvePath(path, output))
+            .filter(({ ext }) => ext === '.html')
+    );
+
+    rollup.watch(watchOptions).on('event', event => {
+        if (event.code === 'ERROR') {
+            console.log(color.red(event));
+        }
+        if (event.code === 'BUNDLE_END') {
+            console.log(color.cyan(`[ROLLUP] built ${event.input} in ${event.duration}ms`));
+        }
+    });
 }
