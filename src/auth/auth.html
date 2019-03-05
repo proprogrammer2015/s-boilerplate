@@ -4,3 +4,7 @@
 <AsyncComponent bind:path bind:text ref:ac></AsyncComponent>
 
 <Search searchText="" />
+<button on:click="generate(100)">Generate</button>
+{#each rows as row}
+    <div><span>Row #{row}</span></div>
+{/each}
