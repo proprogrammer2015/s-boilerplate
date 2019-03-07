@@ -5,9 +5,12 @@ const { Html, Js } = require('svelte-module-combine');
 const { Sass } = require('./transformations/Sass');
 const { rollupTemplate } = require('./rollup.template');
 const rollup = require('rollup');
+// TODO: create files-merge cli component
+
+// TODO: svelte-module-combine as wrapper on files-merge
+
 
 // TODO: paths improvement
-
 const output = './output';
 exports.watch = false;
 exports.patterns = [
