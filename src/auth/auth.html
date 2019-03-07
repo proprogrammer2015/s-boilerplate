@@ -1,9 +1,22 @@
-<button on:click="changeText()">Change text</button>
+<button on:click="updateText()">Update text</button>
+<button on:click="setText()">Set text</button>
 <Panel></Panel>
 
-<AsyncComponent bind:path bind:text ref:ac></AsyncComponent>
+<AsyncComponent bind:path bind:text ref:ac>
+    <span style="color: chartreuse">
+        {text}
+    </span>
+</AsyncComponent>
+<!-- <span>
+            Jacek idzie na Pietrynę albo na ryby
+        </span>
+        <Search searchText={text} />
+        <p style="color:violet">
+            {text}
+        </p> -->
+<!-- <input bind:value=text />  -->
 
-<Search searchText="" />
+
 <button on:click="generate(100)">Generate</button>
 {#each rows as row}
     <div><span>Row #{row}</span></div>

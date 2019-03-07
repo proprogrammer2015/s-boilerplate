@@ -10,8 +10,11 @@ export default {
         }
     },
     methods: {
-        changeText() {
+        updateText() {
             this.refs.ac.update({ text: 'Jacek Placek' });
+        },
+        setText() {
+            this.set({ text: 'Set text works!' });
         },
         generate(length) {
             this.set({ rows: Array.from({ length }, (v, k) => ++k) });

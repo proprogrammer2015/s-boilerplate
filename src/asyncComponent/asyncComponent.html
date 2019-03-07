@@ -1,9 +1,14 @@
-<div>
+<Fragment>
+    <!-- <slot></slot> -->
     {#await component}
     <p>wait for it...</p>
     {:then mixin}
-    <svelte:component this="{mixin[0]}" {...mixin[1]} ref:innerComponent />
+    <svelte:component this="{mixin[0]}" {...mixin[1]} ref:innerComponent>
+        <slot>
+            <span>Default message from asyncComponent slot {text}</span>
+        </slot>
+    </svelte:component>
     {:catch error}
     <p>well that's odd</p>
     {/await}
-</div>
+</Fragment>

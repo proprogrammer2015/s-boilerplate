@@ -4,6 +4,9 @@ const unzip = module => module.default;
 // TODO: get rid of .html ext whilte loading component as reference
 
 export default {
+    components: {
+        Fragment: './fragment.html'
+    },
     computed: {
         component(state) {
             const path = state.path;
