@@ -26,8 +26,6 @@ const moduleDefinition = (paths) => {
         output: {
             dir: 'prod',
             entryFileNames: '[name].js',
-            // name,
-            // file: `${output}`,
             format: 'amd'
         }
     }
