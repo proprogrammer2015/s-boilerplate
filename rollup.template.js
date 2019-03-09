@@ -3,7 +3,6 @@ const resolve = require('rollup-plugin-node-resolve');
 const svelte = require('rollup-plugin-svelte');
 
 const moduleDefinition = ({ input, output, name }) => {
-    console.log(input, output, name);
     return {
         input: `${input}`,
         plugins: [
