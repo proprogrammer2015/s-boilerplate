@@ -3,9 +3,12 @@ const resolve = require('rollup-plugin-node-resolve');
 const svelte = require('rollup-plugin-svelte');
 const minify = require('rollup-plugin-babel-minify');
 
-const moduleDefinition = ({ input, output, name }) => {
+const moduleDefinition = (paths) => {
     return {
-        input: `${input}`,
+        input: paths.reduce((initial, { input, output }, index) => {
+            initial[output] = input;
+            return initial;
+        }, {}),
         plugins: [
             resolve({
                 jsnext: true,
@@ -14,16 +17,18 @@ const moduleDefinition = ({ input, output, name }) => {
             commonjs({}),
             svelte({
                 emitCss: false
-            }),
-            minify()
+            })
+            // minify()
         ],
         onwarn: ({ message }) => console.error('WARN:', message),
         output: {
-            name,
-            file: `${output}`,
+            dir: 'prod',
+            entryFileNames: '[name].js',
+            // name,
+            // file: `${output}`,
             format: 'amd'
         }
     }
 };
 
-exports.rollupTemplate = (paths) => paths.map(moduleDefinition);
+exports.rollupTemplate = (paths) => moduleDefinition(paths);

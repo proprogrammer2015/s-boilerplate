@@ -2,3 +2,4 @@ node_modules
 output
 dist
 rollup.config.js
+prod
