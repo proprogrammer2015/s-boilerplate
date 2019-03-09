@@ -5,7 +5,7 @@ const minify = require('rollup-plugin-babel-minify');
 
 const moduleDefinition = (paths) => {
     return {
-        input: paths.reduce((initial, { input, output }, index) => {
+        input: paths.reduce((initial, { input, output }) => {
             initial[output] = input;
             return initial;
         }, {}),
