@@ -2,9 +2,9 @@ const commonjs = require('rollup-plugin-commonjs');
 const resolve = require('rollup-plugin-node-resolve');
 const svelte = require('rollup-plugin-svelte');
 
-const moduleDefinition = ({ dirStr, modulePath, name, ext }) => {
+const moduleDefinition = ({ input, output, name }) => {
     return {
-        input: `${dirStr}/${name}${ext}`,
+        input: `${input}`,
         plugins: [
             resolve({
                 jsnext: true,
@@ -17,7 +17,7 @@ const moduleDefinition = ({ dirStr, modulePath, name, ext }) => {
         ],
         output: {
             name,
-            file: `${dirStr.replace('output', 'dist')}/${name}.js`,
+            file: `${output}`,
             format: 'amd'
         }
     }
