@@ -17,8 +17,10 @@ const moduleDefinition = (paths) => {
             commonjs({}),
             svelte({
                 emitCss: false
+            }),
+            minify({
+                comments: false
             })
-            // minify()
         ],
         onwarn: ({ message }) => console.error('WARN:', message),
         output: {
