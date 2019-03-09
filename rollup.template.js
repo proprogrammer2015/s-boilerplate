@@ -1,6 +1,7 @@
 const commonjs = require('rollup-plugin-commonjs');
 const resolve = require('rollup-plugin-node-resolve');
 const svelte = require('rollup-plugin-svelte');
+const minify = require('rollup-plugin-babel-minify');
 
 const moduleDefinition = ({ input, output, name }) => {
     return {
@@ -13,9 +14,10 @@ const moduleDefinition = ({ input, output, name }) => {
             commonjs({}),
             svelte({
                 emitCss: false
-            })
+            }),
+            minify()
         ],
-        onwarn: ({message}) => console.error('WARN:', message),
+        onwarn: ({ message }) => console.error('WARN:', message),
         output: {
             name,
             file: `${output}`,
