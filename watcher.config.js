@@ -3,15 +3,13 @@ const { Html, Js, Css } = require('any-file-merge');
 // const { Sass } = require('./transformations/Sass');
 const { rollupTemplate } = require('./rollup.template');
 const rollup = require('rollup');
-// TODO: create files-merge cli component
 
-// TODO: svelte-module-combine as wrapper on files-merge
 const ext = '.html';
 const output = './output';
 exports.watch = true;
 exports.quiet = false;
 exports.output = output;
-exports.fileName = `${ext}`;
+exports.fileName = `${ext}`; // TODO: when [name]-compiled was passed then have to change rollup input file name
 exports.patterns = [
     './src/**',
     // `!./src/**/*${ext}`
@@ -37,7 +35,6 @@ const generateRollupConfig = paths => {
     );
 
     rollup.watch(watchOptions).on('event', event => {
-        // TODO: improve watch errors i.e. missing component i.e. Search in auth.html
         if (event.code === 'ERROR' || event.code === 'FATAL') {
             console.error(event.error);
         }

@@ -2,7 +2,8 @@ export default {
     components: {
         Panel: './../panel/panel.html',
         Search: './../search/search.html',
-        AsyncComponent: './../asyncComponent/asyncComponent.html'
+        AsyncComponent: './../asyncComponent/asyncComponent.html',
+        New: './../new/new.html'
     },
     data() {
         return {
