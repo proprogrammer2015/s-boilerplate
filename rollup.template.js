@@ -15,7 +15,7 @@ const moduleDefinition = ({ input, output, name }) => {
                 emitCss: false
             })
         ],
-        onwarn: ({message}) => console.error('a', message),
+        onwarn: ({message}) => console.error('WARN:', message),
         output: {
             name,
             file: `${output}`,
