@@ -1,7 +1,4 @@
-// TODO: Move unzip function to separate service
-const unzip = module => module.default;
-
-// TODO: get rid of .html ext whilte loading component as reference
+import { resolve } from '../../asyncLoad';
 
 export default {
     components: {
@@ -10,12 +7,12 @@ export default {
     computed: {
         component(state) {
             const path = state.path;
-            return System.import(path).then(unzip)
-            .then(module => [
-                module,
-                state
-            ])
-            // TODO: Remove the timeout
+            return resolve(path)
+                .then(module => [
+                    module,
+                    state
+                ])
+                // TODO: Remove the timeout
                 .then(module => {
                     return new Promise((res, rej) => {
                         setTimeout(() => {

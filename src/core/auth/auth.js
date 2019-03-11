@@ -10,6 +10,10 @@ export default {
             rows: [1]
         }
     },
+    oncreate() {
+        console.log('AUth creation');
+        debugger;
+    },
     methods: {
         updateText() {
             this.refs.ac.update({ text: 'Jacek Placek' });

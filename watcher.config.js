@@ -13,8 +13,7 @@ exports.quiet = false;
 exports.output = output;
 exports.fileName = `${ext}`; // TODO: when [name]-compiled was passed then have to change rollup input file name
 exports.patterns = [
-    './src/**',
-    // `!./src/**/*${ext}`
+    './src/core/**'
 ];
 exports.processors = [
     new Html(),
@@ -32,7 +31,18 @@ const createRollupConfig = paths => rollupTemplate(
             name: input.name,
             input: `${output.modulePath}${ext}`,
             output: `${output.modulePath.replace('/output', '')}`
-        }))
+        })).concat([
+            {
+                name: 'bootstrap',
+                input: './output/bootstrap.js',
+                output: './bootstrap'
+            },
+            {
+                name: 'asyncLoad',
+                input: './output/asyncLoad.js',
+                output: './asyncLoad'
+            },
+        ])
 );
 
 const watch = paths => {
@@ -43,7 +53,7 @@ const watch = paths => {
             console.error(event.error);
         }
         if (event.code === 'BUNDLE_END') {
-            console.log(`[ROLLUP] built ${event.input} in ${event.duration}ms`);
+            console.log(`[ROLLUP] bundled in ${event.duration}ms`);
         }
         if (event.code === 'END' && !isWatchingFiles) {
             watcher.close();
