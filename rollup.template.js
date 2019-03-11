@@ -18,17 +18,18 @@ const moduleDefinition = (paths) => {
             svelte({
                 emitCss: false
             }),
-            minify({
-                comments: false
-            })
+            // minify({
+            //     comments: false
+            // })
         ],
         onwarn: ({ message }) => console.error('WARN:', message),
         output: {
             dir: 'prod',
             entryFileNames: '[name].js',
+            chunkFileNames: 'common-[name].js',
             format: 'amd'
         }
     }
 };
 
-exports.rollupTemplate = (paths) => moduleDefinition(paths);
+exports.rollupTemplate = moduleDefinition;

@@ -31,7 +31,7 @@ const createRollupConfig = paths => rollupTemplate(
         .map(({ output, input }) => ({
             name: input.name,
             input: `${output.modulePath}${ext}`,
-            output: `${output.modulePath.replace('./output', './dist')}`
+            output: `${output.modulePath.replace('/output', '')}`
         }))
 );
 
